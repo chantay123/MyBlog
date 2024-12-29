@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="en-gb"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Java Concurrency: Thread Safety và Synchronization - Tây</title><meta name="description" content="1. Giới thiệu về Concurrency trong Java Concurrency trong Java cho phép&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://chantay123.github.io/MyBlog/java-concurrency-thread-safety-va-synchronization/"><link rel="alternate" type="application/atom+xml" href="https://chantay123.github.io/MyBlog/feed.xml"><link rel="alternate" type="application/json" href="https://chantay123.github.io/MyBlog/feed.json"><meta property="og:title" content="Java Concurrency: Thread Safety và Synchronization"><meta property="og:site_name" content="Tây"><meta property="og:description" content="1. Giới thiệu về Concurrency trong Java Concurrency trong Java cho phép&hellip;"><meta property="og:url" content="https://chantay123.github.io/MyBlog//java-concurrency-thread-safety-va-synchronization/"><meta property="og:type" content="article"><link rel="stylesheet" href="https://chantay123.github.io/MyBlog/assets/css/style.css?v=11114fb0e7bec534ce68d710603fb95d"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://chantay123.github.io/MyBlog/java-concurrency-thread-safety-va-synchronization/"},"headline":"Java Concurrency: Thread Safety và Synchronization","datePublished":"2024-12-29T21:02+07:00","dateModified":"2024-12-29T21:02+07:00","description":"1. Giới thiệu về Concurrency trong Java Concurrency trong Java cho phép&hellip;","author":{"@type":"Person","name":"chantay","url":"https://chantay123.github.io/MyBlog/authors/chantay/"},"publisher":{"@type":"Organization","name":"chantay"}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript></head><body class="post-template"><div class="container"><header class="header" id="js-header"><a href="https://chantay123.github.io/MyBlog/" class="logo">Tây</a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://chantay123.github.io/MyBlog/" target="_self">Home</a></li><li><a href="https://chantay123.github.io/MyBlog/my-blogs/" target="_self">My Blogs</a></li><li><a href="https://chantay123.github.io/MyBlog/profile-ca-nhan/" target="_self">About</a></li></ul></nav></header><main class="post"><article class="content wrapper"><header class="hero"><p class="content__meta">By <a href="https://chantay123.github.io/MyBlog/authors/chantay/" rel="author" title="chantay">chantay</a> Published on <time datetime="2024-12-29T21:02">December 29, 2024</time></p><h1 class="content__title">Java Concurrency: Thread Safety và Synchronization</h1></header><div class="content__entry"><article class="post-content"><h3>1. Giới thiệu về Concurrency trong Java</h3><p>Concurrency trong Java cho phép thực hiện nhiều tác vụ đồng thời, tăng hiệu suất của ứng dụng. Tuy nhiên, nó cũng đặt ra các thách thức về thread safety và synchronization.</p><h3>2. Thread Safety</h3><p>Thread safety đảm bảo rằng một đoạn code hoặc dữ liệu có thể được truy cập an toàn bởi nhiều thread cùng một lúc.</p><pre><code>
+public class Counter {
+    private int count = 0;
+
+    public synchronized void increment() {
+        count++;
+    }
+
+    public synchronized int getCount() {
+        return count;
+    }
+}
+            </code></pre><h3>3. Synchronization</h3><p>Synchronization trong Java được sử dụng để kiểm soát truy cập vào các tài nguyên được chia sẻ bởi nhiều thread.</p><pre><code>
+public class SynchronizedMethod {
+    private int sum = 0;
+
+    public synchronized void add(int value) {
+        sum += value;
+    }
+
+    public int getSum() {
+        return sum;
+    }
+}
+            </code></pre><h3>4. Volatile Keyword</h3><p>Từ khóa volatile đảm bảo rằng các thay đổi đối với một biến được ngay lập tức hiển thị cho tất cả các thread.</p><pre><code>
+public class SharedObject {
+    private volatile boolean flag = false;
+
+    public void setFlag(boolean value) {
+        flag = value;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+}
+            </code></pre><h3>5. Lock Interface</h3><p>Java cung cấp interface Lock để có kiểm soát chi tiết hơn về synchronization.</p><pre><code>
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class LockExample {
+    private Lock lock = new ReentrantLock();
+    private int count = 0;
+
+    public void increment() {
+        lock.lock();
+        try {
+            count++;
+        } finally {
+            lock.unlock();
+        }
+    }
+}
+            </code></pre><h3>6. Atomic Classes</h3><p>Java cung cấp các lớp atomic để thực hiện các hoạt động thread-safe mà không cần synchronization rõ ràng.</p><pre><code>
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class AtomicCounter {
+    private AtomicInteger count = new AtomicInteger(0);
+
+    public void increment() {
+        count.incrementAndGet();
+    }
+
+    public int getCount() {
+        return count.get();
+    }
+}
+            </code></pre><h3>7. Thread Pools</h3><p>Thread pools quản lý một nhóm worker threads, giúp tái sử dụng threads và giảm overhead của việc tạo threads mới.</p><pre><code>
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ThreadPoolExample {
+    public static void main(String[] args) {
+        ExecutorService executor = Executors.newFixedThreadPool(5);
+        for (int i = 0; i &lt; 10; i++) {
+            Runnable worker = new WorkerThread("" + i);
+            executor.execute(worker);
+        }
+        executor.shutdown();
+    }
+}
+            </code></pre><h3>Kết luận</h3><p class="align-left">Concurrency trong Java là một chủ đề phức tạp nhưng quan trọng. Hiểu và áp dụng đúng các kỹ thuật thread safety và synchronization sẽ giúp bạn xây dựng các ứng dụng Java đa luồng hiệu quả và đáng tin cậy.</p></article></div><footer class="content__footer"><div class="content__last-updated">This article was updated on December 29, 2024</div><div class="content__footer__col"><div class="content__share"></div></div><nav class="content__nav"><div class="content__nav__prev">Previous Post<h5><a href="https://chantay123.github.io/MyBlog/java-streams-api-xu-ly-du-lieu-hieu-qua/" class="invert" rel="prev">Java Streams API: Xử lý dữ liệu hiệu quả</a></h5></div><div class="content__nav__next">Next Post<h5><a href="https://chantay123.github.io/MyBlog/javascript-performance-optimization-best-practices/" class="invert" rel="next">JavaScript Performance Optimization: Best Practices</a></h5></div></nav><div class="content__bio"><div><h3><a href="https://chantay123.github.io/MyBlog/authors/chantay/" class="invert" title="chantay">chantay</a></h3></div></div><div class="content__related"><h3 class="u-h5">Related posts</h3><div class="content__related__wrap"><figure><figcaption><h4><a href="https://chantay123.github.io/MyBlog/java-generics-tang-cuong-tinh-linh-hoat-va-an-toan-kieu/" class="invert">Java Generics: Tăng cường tính linh hoạt và an toàn kiểu</a></h4><time datetime="2024-12-29T20:52">December 29, 2024</time></figcaption></figure><figure><figcaption><h4><a href="https://chantay123.github.io/MyBlog/javascript-modules-commonjs-va-es6-modules/" class="invert">JavaScript Modules: CommonJS và ES6 Modules</a></h4><time datetime="2024-12-29T20:51">December 29, 2024</time></figcaption></figure><figure><figcaption><h4><a href="https://chantay123.github.io/MyBlog/java-design-patterns-singleton-factory-va-observer/" class="invert">Java Design Patterns: Singleton, Factory, và Observer</a></h4><time datetime="2024-12-29T20:49">December 29, 2024</time></figcaption></figure></div></div></footer></article></main><footer class="footer"><div class="footer__copyright">Powered by Publii</div></footer></div><script defer="defer" src="https://chantay123.github.io/MyBlog/assets/js/scripts.min.js?v=4268bfae06e330d473c424d50f09abda"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.navbar'};</script><script>/*<![CDATA[*/var images=document.querySelectorAll("img[loading]");for(var i=0;i<images.length;i++){if(images[i].complete){images[i].classList.add("is-loaded")}else{images[i].addEventListener("load",function(){this.classList.add("is-loaded")},false)}};/*]]>*/</script></body></html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en-gb"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Java Design Patterns: Singleton, Factory, và Observer - Tây</title><meta name="description" content="1. Giới thiệu về Design Patterns Design patterns là các giải pháp&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://chantay123.github.io/MyBlog/java-design-patterns-singleton-factory-va-observer/"><link rel="alternate" type="application/atom+xml" href="https://chantay123.github.io/MyBlog/feed.xml"><link rel="alternate" type="application/json" href="https://chantay123.github.io/MyBlog/feed.json"><meta property="og:title" content="Java Design Patterns: Singleton, Factory, và Observer"><meta property="og:site_name" content="Tây"><meta property="og:description" content="1. Giới thiệu về Design Patterns Design patterns là các giải pháp&hellip;"><meta property="og:url" content="https://chantay123.github.io/MyBlog//java-design-patterns-singleton-factory-va-observer/"><meta property="og:type" content="article"><link rel="stylesheet" href="https://chantay123.github.io/MyBlog/assets/css/style.css?v=11114fb0e7bec534ce68d710603fb95d"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://chantay123.github.io/MyBlog/java-design-patterns-singleton-factory-va-observer/"},"headline":"Java Design Patterns: Singleton, Factory, và Observer","datePublished":"2024-12-29T20:49+07:00","dateModified":"2024-12-29T20:49+07:00","description":"1. Giới thiệu về Design Patterns Design patterns là các giải pháp&hellip;","author":{"@type":"Person","name":"chantay","url":"https://chantay123.github.io/MyBlog/authors/chantay/"},"publisher":{"@type":"Organization","name":"chantay"}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript></head><body class="post-template"><div class="container"><header class="header" id="js-header"><a href="https://chantay123.github.io/MyBlog/" class="logo">Tây</a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://chantay123.github.io/MyBlog/" target="_self">Home</a></li><li><a href="https://chantay123.github.io/MyBlog/my-blogs/" target="_self">My Blogs</a></li><li><a href="https://chantay123.github.io/MyBlog/profile-ca-nhan/" target="_self">About</a></li></ul></nav></header><main class="post"><article class="content wrapper"><header class="hero"><p class="content__meta">By <a href="https://chantay123.github.io/MyBlog/authors/chantay/" rel="author" title="chantay">chantay</a> Published on <time datetime="2024-12-29T20:49">December 29, 2024</time></p><h1 class="content__title">Java Design Patterns: Singleton, Factory, và Observer</h1></header><div class="content__entry"><header><nav></nav></header><main><article class="post-content"><h3>1. Giới thiệu về Design Patterns</h3><p>Design patterns là các giải pháp tái sử dụng cho các vấn đề phổ biến trong thiết kế phần mềm. Chúng giúp tạo ra code dễ bảo trì và mở rộng.</p><h3>2. Singleton Pattern</h3><p>Singleton đảm bảo một class chỉ có một instance và cung cấp một điểm truy cập toàn cục đến nó.</p><pre><code>
+public class Singleton {
+    private static Singleton instance;
+    
+    private Singleton() {}
+    
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}
+            </code></pre><h3>3. Factory Pattern</h3><p>Factory Pattern định nghĩa một interface để tạo đối tượng trong lớp cha, nhưng cho phép các lớp con quyết định lớp nào sẽ được khởi tạo.</p><pre><code>
+interface Animal {
+    void makeSound();
+}
+
+class Dog implements Animal {
+    public void makeSound() {
+        System.out.println("Woof");
+    }
+}
+
+class Cat implements Animal {
+    public void makeSound() {
+        System.out.println("Meow");
+    }
+}
+
+class AnimalFactory {
+    public Animal getAnimal(String animalType) {
+        if (animalType == null) {
+            return null;
+        }
+        if (animalType.equalsIgnoreCase("DOG")) {
+            return new Dog();
+        } else if (animalType.equalsIgnoreCase("CAT")) {
+            return new Cat();
+        }
+        return null;
+    }
+}
+            </code></pre><h3>4. Observer Pattern</h3><p>Observer Pattern định nghĩa một sự phụ thuộc một-nhiều giữa các đối tượng để khi một đối tượng thay đổi trạng thái, tất cả các phụ thuộc của nó được thông báo và cập nhật tự động.</p><pre><code>
+import java.util.ArrayList;
+import java.util.List;
+
+interface Observer {
+    void update(String message);
+}
+
+class Subject {
+    private List observers = new ArrayList&lt;&gt;();
+    private String state;
+
+    public void setState(String state) {
+        this.state = state;
+        notifyAllObservers();
+    }
+
+    public void attach(Observer observer) {
+        observers.add(observer);
+    }
+
+    public void notifyAllObservers() {
+        for (Observer observer : observers) {
+            observer.update(state);
+        }
+    }
+}
+
+class ConcreteObserver implements Observer {
+    private String name;
+
+    public ConcreteObserver(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void update(String message) {
+        System.out.println(name + " received: " + message);
+    }
+}
+            </code></pre><h3>5. Sử dụng Design Patterns</h3><p>Ví dụ sử dụng các pattern trên:</p><pre><code>
+public class Main {
+    public static void main(String[] args) {
+        // Singleton
+        Singleton singleton = Singleton.getInstance();
+
+        // Factory
+        AnimalFactory factory = new AnimalFactory();
+        Animal dog = factory.getAnimal("DOG");
+        dog.makeSound();
+
+        // Observer
+        Subject subject = new Subject();
+        new ConcreteObserver("Observer 1");
+        new ConcreteObserver("Observer 2");
+
+        subject.setState("New State");
+    }
+}
+            </code></pre><h3>Kết luận</h3><p>Design patterns là công cụ quan trọng trong việc thiết kế phần mềm. Hiểu và áp dụng đúng các pattern sẽ giúp bạn tạo ra code có cấu trúc tốt, dễ bảo trì và mở rộng.</p></article></main></div><footer class="content__footer"><div class="content__last-updated">This article was updated on December 29, 2024</div><div class="content__footer__col"><div class="content__share"></div></div><nav class="content__nav"><div class="content__nav__prev">Previous Post<h5><a href="https://chantay123.github.io/MyBlog/javascript-asynchronous-programming-promises-asyncawait/" class="invert" rel="prev">JavaScript Asynchronous Programming: Promises, Async/Await</a></h5></div><div class="content__nav__next">Next Post<h5><a href="https://chantay123.github.io/MyBlog/javascript-modules-commonjs-va-es6-modules/" class="invert" rel="next">JavaScript Modules: CommonJS và ES6 Modules</a></h5></div></nav><div class="content__bio"><div><h3><a href="https://chantay123.github.io/MyBlog/authors/chantay/" class="invert" title="chantay">chantay</a></h3></div></div><div class="content__related"><h3 class="u-h5">Related posts</h3><div class="content__related__wrap"><figure><figcaption><h4><a href="https://chantay123.github.io/MyBlog/javascript-functional-programming-map-filter-va-reduce/" class="invert">JavaScript Functional Programming: Map, Filter, và Reduce</a></h4><time datetime="2024-12-29T20:53">December 29, 2024</time></figcaption></figure><figure><figcaption><h4><a href="https://chantay123.github.io/MyBlog/java-generics-tang-cuong-tinh-linh-hoat-va-an-toan-kieu/" class="invert">Java Generics: Tăng cường tính linh hoạt và an toàn kiểu</a></h4><time datetime="2024-12-29T20:52">December 29, 2024</time></figcaption></figure><figure><figcaption><h4><a href="https://chantay123.github.io/MyBlog/javascript-modules-commonjs-va-es6-modules/" class="invert">JavaScript Modules: CommonJS và ES6 Modules</a></h4><time datetime="2024-12-29T20:51">December 29, 2024</time></figcaption></figure></div></div></footer></article></main><footer class="footer"><div class="footer__copyright">Powered by Publii</div></footer></div><script defer="defer" src="https://chantay123.github.io/MyBlog/assets/js/scripts.min.js?v=4268bfae06e330d473c424d50f09abda"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.navbar'};</script><script>/*<![CDATA[*/var images=document.querySelectorAll("img[loading]");for(var i=0;i<images.length;i++){if(images[i].complete){images[i].classList.add("is-loaded")}else{images[i].addEventListener("load",function(){this.classList.add("is-loaded")},false)}};/*]]>*/</script></body></html>

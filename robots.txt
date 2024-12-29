@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://chantay123.github.io/MyBlog/sitemap.xml

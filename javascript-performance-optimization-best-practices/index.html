@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="en-gb"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JavaScript Performance Optimization: Best Practices - Tây</title><meta name="description" content="1. Giới thiệu Tối ưu hóa hiệu suất là một khía cạnh&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://chantay123.github.io/MyBlog/javascript-performance-optimization-best-practices/"><link rel="alternate" type="application/atom+xml" href="https://chantay123.github.io/MyBlog/feed.xml"><link rel="alternate" type="application/json" href="https://chantay123.github.io/MyBlog/feed.json"><meta property="og:title" content="JavaScript Performance Optimization: Best Practices"><meta property="og:site_name" content="Tây"><meta property="og:description" content="1. Giới thiệu Tối ưu hóa hiệu suất là một khía cạnh&hellip;"><meta property="og:url" content="https://chantay123.github.io/MyBlog//javascript-performance-optimization-best-practices/"><meta property="og:type" content="article"><link rel="stylesheet" href="https://chantay123.github.io/MyBlog/assets/css/style.css?v=11114fb0e7bec534ce68d710603fb95d"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://chantay123.github.io/MyBlog/javascript-performance-optimization-best-practices/"},"headline":"JavaScript Performance Optimization: Best Practices","datePublished":"2024-12-29T21:03+07:00","dateModified":"2024-12-29T21:03+07:00","description":"1. Giới thiệu Tối ưu hóa hiệu suất là một khía cạnh&hellip;","author":{"@type":"Person","name":"chantay","url":"https://chantay123.github.io/MyBlog/authors/chantay/"},"publisher":{"@type":"Organization","name":"chantay"}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript></head><body class="post-template"><div class="container"><header class="header" id="js-header"><a href="https://chantay123.github.io/MyBlog/" class="logo">Tây</a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://chantay123.github.io/MyBlog/" target="_self">Home</a></li><li><a href="https://chantay123.github.io/MyBlog/my-blogs/" target="_self">My Blogs</a></li><li><a href="https://chantay123.github.io/MyBlog/profile-ca-nhan/" target="_self">About</a></li></ul></nav></header><main class="post"><article class="content wrapper"><header class="hero"><p class="content__meta">By <a href="https://chantay123.github.io/MyBlog/authors/chantay/" rel="author" title="chantay">chantay</a> Published on <time datetime="2024-12-29T21:03">December 29, 2024</time></p><h1 class="content__title">JavaScript Performance Optimization: Best Practices</h1></header><div class="content__entry"><header><nav></nav></header><main><article class="post-content"><h3>1. Giới thiệu</h3><p>Tối ưu hóa hiệu suất là một khía cạnh quan trọng trong phát triển JavaScript. Bài viết này sẽ giới thiệu một số best practices để cải thiện hiệu suất của ứng dụng JavaScript.</p><h3>2. Sử dụng Local Variables</h3><p>Truy cập biến local nhanh hơn so với biến global hoặc thuộc tính của objects.</p><pre><code>
+// Không tốt
+for (let i = 0; i &lt; window.myArray.length; i++) {
+    // Do something
+}
+
+// Tốt hơn
+const myArray = window.myArray;
+const len = myArray.length;
+for (let i = 0; i &lt; len; i++) {
+    // Do something
+}
+            </code></pre><h3>3. Tránh sử dụng eval()</h3><p>Hàm eval() làm chậm quá trình thực thi và có thể gây ra các vấn đề bảo mật.</p><pre><code>
+// Tránh sử dụng
+eval('var x = 10');
+
+// Thay vào đó, hãy sử dụng cách khác
+let x = 10;
+            </code></pre><h3>4. Sử dụng Event Delegation</h3><p>Thay vì gắn nhiều event listeners, sử dụng event delegation để xử lý events ở cấp cao hơn.</p><pre><code>
+// Không hiệu quả
+document.querySelectorAll('button').forEach(button =&gt; {
+    button.addEventListener('click', handleClick);
+});
+
+// Hiệu quả hơn
+document.addEventListener('click', e =&gt; {
+    if (e.target.matches('button')) {
+        handleClick(e);
+    }
+});
+            </code></pre><h3>5. Tối ưu hóa DOM Manipulation</h3><p>Giảm thiểu việc truy cập và thao tác trực tiếp với DOM.</p><pre><code>
+// Không hiệu quả
+for (let i = 0; i &lt; 1000; i++) {
+    document.body.innerHTML += '</code></pre><div>' + i + '</div><pre><code>';
+}
+
+// Hiệu quả hơn
+const fragment = document.createDocumentFragment();
+for (let i = 0; i &lt; 1000; i++) {
+    const div = document.createElement('div');
+    div.textContent = i;
+    fragment.appendChild(div);
+}
+document.body.appendChild(fragment);
+            </code></pre><h3>6. Sử dụng Web Workers cho tác vụ nặng</h3><p>Web Workers cho phép chạy scripts trong background threads.</p><pre><code>
+// main.js
+const worker = new Worker('worker.js');
+worker.postMessage({data: 'Start processing'});
+worker.onmessage = function(e) {
+    console.log('Received result:', e.data);
+};
+
+// worker.js
+self.onmessage = function(e) {
+    // Perform heavy computation
+    const result = heavyComputation(e.data);
+    self.postMessage(result);
+};
+            </code></pre><h3>7. Sử dụng Debounce và Throttle</h3><p>Debounce và throttle giúp kiểm soát tần suất gọi hàm, đặc biệt hữu ích cho các sự kiện như scroll hoặc resize.</p><pre><code>
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () =&gt; {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+window.addEventListener('resize', debounce(() =&gt; {
+    console.log('Resized');
+}, 250));
+            </code></pre><h3>8. Sử dụng Memoization</h3><p>Memoization là kỹ thuật lưu trữ kết quả của các lời gọi hàm đắt đỏ.</p><pre><code>
+function memoize(fn) {
+    const cache = new Map();
+    return function(...args) {
+        const key = JSON.stringify(args);
+        if (cache.has(key)) {
+            return cache.get(key);
+        }
+        const result = fn.apply(this, args);
+        cache.set(key, result);
+        return result;
+    }
+}
+
+const expensiveFunction = memoize((n) =&gt; {
+    console.log('Computing...');
+    return n * n;
+});
+
+console.log(expensiveFunction(4)); // Computing... 16
+console.log(expensiveFunction(4)); // 16 (cached)
+            </code></pre><h3>Kết luận</h3><p>Tối ưu hóa hiệu suất JavaScript là một quá trình liên tục. Bằng cách áp dụng các best practices này, bạn có thể cải thiện đáng kể tốc độ và hiệu quả của ứng dụng JavaScript của mình.</p></article></main></div><footer class="content__footer"><div class="content__last-updated">This article was updated on December 29, 2024</div><div class="content__footer__col"><div class="content__share"></div></div><nav class="content__nav"><div class="content__nav__prev">Previous Post<h5><a href="https://chantay123.github.io/MyBlog/java-concurrency-thread-safety-va-synchronization/" class="invert" rel="prev">Java Concurrency: Thread Safety và Synchronization</a></h5></div><div class="content__nav__next">Next Post<h5><a href="https://chantay123.github.io/MyBlog/gioi-thieu-tong-quat-ve-ngon-ngu-javascript/" class="invert" rel="next">Giới thiệu tổng quát về ngôn ngữ JavaScript</a></h5></div></nav><div class="content__bio"><div><h3><a href="https://chantay123.github.io/MyBlog/authors/chantay/" class="invert" title="chantay">chantay</a></h3></div></div><div class="content__related"><h3 class="u-h5">Related posts</h3><div class="content__related__wrap"><figure><figcaption><h4><a href="https://chantay123.github.io/MyBlog/gioi-thieu-tong-quat-ve-ngon-ngu-javascript/" class="invert">Giới thiệu tổng quát về ngôn ngữ JavaScript</a></h4><time datetime="2024-12-29T21:05">December 29, 2024</time></figcaption></figure><figure><figcaption><h4><a href="https://chantay123.github.io/MyBlog/javascript-functional-programming-map-filter-va-reduce/" class="invert">JavaScript Functional Programming: Map, Filter, và Reduce</a></h4><time datetime="2024-12-29T20:53">December 29, 2024</time></figcaption></figure><figure><figcaption><h4><a href="https://chantay123.github.io/MyBlog/javascript-modules-commonjs-va-es6-modules/" class="invert">JavaScript Modules: CommonJS và ES6 Modules</a></h4><time datetime="2024-12-29T20:51">December 29, 2024</time></figcaption></figure></div></div></footer></article></main><footer class="footer"><div class="footer__copyright">Powered by Publii</div></footer></div><script defer="defer" src="https://chantay123.github.io/MyBlog/assets/js/scripts.min.js?v=4268bfae06e330d473c424d50f09abda"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.navbar'};</script><script>/*<![CDATA[*/var images=document.querySelectorAll("img[loading]");for(var i=0;i<images.length;i++){if(images[i].complete){images[i].classList.add("is-loaded")}else{images[i].addEventListener("load",function(){this.classList.add("is-loaded")},false)}};/*]]>*/</script></body></html>
