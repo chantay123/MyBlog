@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="en-gb"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Java Collections Framework: Tổng quan và Sử dụng - Tây</title><meta name="description" content="1. Giới thiệu về Java Collections Framework Java Collections Framework cung cấp&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://chantay123.github.io/MyBlog/java-collections-framework-tong-quan-va-su-dung.html"><link rel="alternate" type="application/atom+xml" href="https://chantay123.github.io/MyBlog/feed.xml"><link rel="alternate" type="application/json" href="https://chantay123.github.io/MyBlog/feed.json"><meta property="og:title" content="Java Collections Framework: Tổng quan và Sử dụng"><meta property="og:site_name" content="Tây"><meta property="og:description" content="1. Giới thiệu về Java Collections Framework Java Collections Framework cung cấp&hellip;"><meta property="og:url" content="https://chantay123.github.io/MyBlog/java-collections-framework-tong-quan-va-su-dung.html"><meta property="og:type" content="article"><link rel="stylesheet" href="https://chantay123.github.io/MyBlog/assets/css/style.css?v=fcd2aaaabea4ee6543ab48c0ada756d6"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://chantay123.github.io/MyBlog/java-collections-framework-tong-quan-va-su-dung.html"},"headline":"Java Collections Framework: Tổng quan và Sử dụng","datePublished":"2024-12-29T20:44+07:00","dateModified":"2024-12-30T16:20+07:00","description":"1. Giới thiệu về Java Collections Framework Java Collections Framework cung cấp&hellip;","author":{"@type":"Person","name":"chantay","url":"https://chantay123.github.io/MyBlog/authors/chantay/"},"publisher":{"@type":"Organization","name":"chantay"}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript></head><body class="post-template"><div class="container"><header class="header" id="js-header"><a href="https://chantay123.github.io/MyBlog/" class="logo">Tây</a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://chantay123.github.io/MyBlog/" target="_self">Home</a></li><li><a href="https://chantay123.github.io/MyBlog/my-blogs.html" target="_self">My Blogs</a></li><li><a href="https://chantay123.github.io/MyBlog/profile-ca-nhan.html" target="_self">About</a></li></ul></nav></header><main class="post"><article class="content wrapper"><header class="hero"><h1 class="content__title">Java Collections Framework: Tổng quan và Sử dụng</h1></header><div class="content__entry"><header></header><main><article class="post-content"><h2> </h2><h3>1. Giới thiệu về Java Collections Framework</h3><p>Java Collections Framework cung cấp một kiến trúc để lưu trữ và thao tác với các nhóm đối tượng. Nó bao gồm các interface, các lớp triển khai và các thuật toán.</p><h3>2. Các Interface chính</h3><ul><li>Collection: Interface gốc của framework</li><li>List: Một collection có thứ tự</li><li>Set: Một collection không chứa các phần tử trùng lặp</li><li>Map: Ánh xạ các key tới các value</li></ul><h3>3. Các Lớp triển khai phổ biến</h3><pre><code>
+// ArrayList
+List arrayList = new ArrayList&lt;&gt;();
+arrayList.add("Java");
+arrayList.add("Python");
+
+// LinkedList
+List linkedList = new LinkedList&lt;&gt;();
+linkedList.add("C++");
+linkedList.add("JavaScript");
+
+// HashSet
+Set hashSet = new HashSet&lt;&gt;();
+hashSet.add(1);
+hashSet.add(2);
+
+// HashMap
+Map&lt;String, Integer&gt; hashMap = new HashMap&lt;&gt;();
+hashMap.put("One", 1);
+hashMap.put("Two", 2);
+            </code></pre><h3>4. Sử dụng Iterator</h3><p>Iterator là một interface được sử dụng để duyệt qua các phần tử của collection:</p><pre><code>
+List list = Arrays.asList("Java", "Python", "C++");
+Iterator iterator = list.iterator();
+while (iterator.hasNext()) {
+    System.out.println(iterator.next());
+}
+            </code></pre><h3>5. Sắp xếp Collections</h3><p>Java cung cấp các phương thức để sắp xếp collections:</p><pre><code>
+List numbers = Arrays.asList(3, 1, 4, 1, 5, 9);
+Collections.sort(numbers);
+System.out.println(numbers); // [1, 1, 3, 4, 5, 9]
+
+// Sắp xếp với Comparator
+Collections.sort(numbers, (a, b) -&gt; b.compareTo(a));
+System.out.println(numbers); // [9, 5, 4, 3, 1, 1]
+            </code></pre><h3>6. Stream API</h3><p>Java 8 giới thiệu Stream API, cung cấp một cách mạnh mẽ để xử lý collections:</p><pre><code>
+List names = Arrays.asList("Alice", "Bob", "Charlie", "David");
+names.stream()
+     .filter(name -&gt; name.startsWith("C"))
+     .map(String::toUpperCase)
+     .forEach(System.out::println);
+            </code></pre><h3>Kết luận</h3><p>Java Collections Framework là một công cụ mạnh mẽ cho việc quản lý và xử lý dữ liệu. Hiểu và sử dụng hiệu quả framework này sẽ giúp bạn viết code Java hiệu quả và tối ưu hơn.</p></article></main></div><footer class="content__footer"><div class="content__last-updated">This article was updated on December 30, 2024</div><div class="content__footer__col"><ul class="content__tag"><li><a href="https://chantay123.github.io/MyBlog/tags/blog/">blog</a></li></ul><div class="content__share"></div></div><nav class="content__nav"><div class="content__nav__prev">Previous Post<h5><a href="https://chantay123.github.io/MyBlog/chu-de-muon-gioi-thieu-java-and-javascrip.html" class="invert" rel="prev"> Giới thiệu Về Ngô ngữ Java</a></h5></div><div class="content__nav__next">Next Post<h5><a href="https://chantay123.github.io/MyBlog/javascript-asynchronous-programming-promises-asyncawait.html" class="invert" rel="next">JavaScript Asynchronous Programming: Promises, Async/Await</a></h5></div></nav></footer></article></main><footer class="footer"><div class="footer__copyright">Powered by Publii</div></footer></div><script defer="defer" src="https://chantay123.github.io/MyBlog/assets/js/scripts.min.js?v=4268bfae06e330d473c424d50f09abda"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.navbar'};</script><script>/*<![CDATA[*/var images=document.querySelectorAll("img[loading]");for(var i=0;i<images.length;i++){if(images[i].complete){images[i].classList.add("is-loaded")}else{images[i].addEventListener("load",function(){this.classList.add("is-loaded")},false)}};/*]]>*/</script></body></html>

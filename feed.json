@@ -10,8 +10,8 @@
     },
     "items": [
         {
-            "id": "https://chantay123.github.io/MyBlog/gioi-thieu-tong-quat-ve-ngon-ngu-javascript/",
-            "url": "https://chantay123.github.io/MyBlog/gioi-thieu-tong-quat-ve-ngon-ngu-javascript/",
+            "id": "https://chantay123.github.io/MyBlog/gioi-thieu-tong-quat-ve-ngon-ngu-javascript.html",
+            "url": "https://chantay123.github.io/MyBlog/gioi-thieu-tong-quat-ve-ngon-ngu-javascript.html",
             "title": "Giới thiệu tổng quát về ngôn ngữ JavaScript",
             "summary": "JavaScript là ngôn ngữ lập trình chủ yếu được sử dụng trong&hellip;",
             "content_html": "<p class=\"align-left\">JavaScript là ngôn ngữ lập trình chủ yếu được sử dụng trong phát triển web để tạo các trang web tương tác và động. Nó có thể chạy trên trình duyệt của người dùng mà không cần phải cài đặt phần mềm bổ sung. JavaScript không chỉ giúp thay đổi nội dung của trang web mà còn có thể thao tác với các phần tử giao diện người dùng như form, bảng và điều khiển sự kiện người dùng. Với khả năng làm việc với HTML và CSS, JavaScript cho phép lập trình viên tạo ra các trang web đáp ứng và mang lại trải nghiệm người dùng mượt mà. Ngoài ra, JavaScript cũng có thể được sử dụng để phát triển ứng dụng phía máy chủ thông qua Node.js, một nền tảng JavaScript chạy trên máy chủ. Điều này giúp JavaScript trở thành một ngôn ngữ phát triển toàn diện, từ giao diện người dùng đến các tác vụ backend, và cung cấp một hệ sinh thái phong phú cho lập trình viên.</p>",
@@ -19,13 +19,14 @@
                 "name": "chantay"
             },
             "tags": [
+                   "blog"
             ],
             "date_published": "2024-12-29T21:05:12+07:00",
-            "date_modified": "2024-12-29T21:05:12+07:00"
+            "date_modified": "2024-12-30T16:12:27+07:00"
         },
         {
-            "id": "https://chantay123.github.io/MyBlog/javascript-performance-optimization-best-practices/",
-            "url": "https://chantay123.github.io/MyBlog/javascript-performance-optimization-best-practices/",
+            "id": "https://chantay123.github.io/MyBlog/javascript-performance-optimization-best-practices.html",
+            "url": "https://chantay123.github.io/MyBlog/javascript-performance-optimization-best-practices.html",
             "title": "JavaScript Performance Optimization: Best Practices",
             "summary": "1. Giới thiệu Tối ưu hóa hiệu suất là một khía cạnh&hellip;",
             "content_html": "<header><nav></nav></header><main>\n<article class=\"post-content\">\n<h3>1. Giới thiệu</h3>\n<p>Tối ưu hóa hiệu suất là một khía cạnh quan trọng trong phát triển JavaScript. Bài viết này sẽ giới thiệu một số best practices để cải thiện hiệu suất của ứng dụng JavaScript.</p>\n<h3>2. Sử dụng Local Variables</h3>\n<p>Truy cập biến local nhanh hơn so với biến global hoặc thuộc tính của objects.</p>\n<pre><code>\n// Không tốt\nfor (let i = 0; i &lt; window.myArray.length; i++) {\n    // Do something\n}\n\n// Tốt hơn\nconst myArray = window.myArray;\nconst len = myArray.length;\nfor (let i = 0; i &lt; len; i++) {\n    // Do something\n}\n            </code></pre>\n<h3>3. Tránh sử dụng eval()</h3>\n<p>Hàm eval() làm chậm quá trình thực thi và có thể gây ra các vấn đề bảo mật.</p>\n<pre><code>\n// Tránh sử dụng\neval('var x = 10');\n\n// Thay vào đó, hãy sử dụng cách khác\nlet x = 10;\n            </code></pre>\n<h3>4. Sử dụng Event Delegation</h3>\n<p>Thay vì gắn nhiều event listeners, sử dụng event delegation để xử lý events ở cấp cao hơn.</p>\n<pre><code>\n// Không hiệu quả\ndocument.querySelectorAll('button').forEach(button =&gt; {\n    button.addEventListener('click', handleClick);\n});\n\n// Hiệu quả hơn\ndocument.addEventListener('click', e =&gt; {\n    if (e.target.matches('button')) {\n        handleClick(e);\n    }\n});\n            </code></pre>\n<h3>5. Tối ưu hóa DOM Manipulation</h3>\n<p>Giảm thiểu việc truy cập và thao tác trực tiếp với DOM.</p>\n<pre><code>\n// Không hiệu quả\nfor (let i = 0; i &lt; 1000; i++) {\n    document.body.innerHTML += '</code></pre>\n<div>' + i + '</div>\n<pre><code>';\n}\n\n// Hiệu quả hơn\nconst fragment = document.createDocumentFragment();\nfor (let i = 0; i &lt; 1000; i++) {\n    const div = document.createElement('div');\n    div.textContent = i;\n    fragment.appendChild(div);\n}\ndocument.body.appendChild(fragment);\n            </code></pre>\n<h3>6. Sử dụng Web Workers cho tác vụ nặng</h3>\n<p>Web Workers cho phép chạy scripts trong background threads.</p>\n<pre><code>\n// main.js\nconst worker = new Worker('worker.js');\nworker.postMessage({data: 'Start processing'});\nworker.onmessage = function(e) {\n    console.log('Received result:', e.data);\n};\n\n// worker.js\nself.onmessage = function(e) {\n    // Perform heavy computation\n    const result = heavyComputation(e.data);\n    self.postMessage(result);\n};\n            </code></pre>\n<h3>7. Sử dụng Debounce và Throttle</h3>\n<p>Debounce và throttle giúp kiểm soát tần suất gọi hàm, đặc biệt hữu ích cho các sự kiện như scroll hoặc resize.</p>\n<pre><code>\nfunction debounce(func, wait) {\n    let timeout;\n    return function executedFunction(...args) {\n        const later = () =&gt; {\n            clearTimeout(timeout);\n            func(...args);\n        };\n        clearTimeout(timeout);\n        timeout = setTimeout(later, wait);\n    };\n}\n\nwindow.addEventListener('resize', debounce(() =&gt; {\n    console.log('Resized');\n}, 250));\n            </code></pre>\n<h3>8. Sử dụng Memoization</h3>\n<p>Memoization là kỹ thuật lưu trữ kết quả của các lời gọi hàm đắt đỏ.</p>\n<pre><code>\nfunction memoize(fn) {\n    const cache = new Map();\n    return function(...args) {\n        const key = JSON.stringify(args);\n        if (cache.has(key)) {\n            return cache.get(key);\n        }\n        const result = fn.apply(this, args);\n        cache.set(key, result);\n        return result;\n    }\n}\n\nconst expensiveFunction = memoize((n) =&gt; {\n    console.log('Computing...');\n    return n * n;\n});\n\nconsole.log(expensiveFunction(4)); // Computing... 16\nconsole.log(expensiveFunction(4)); // 16 (cached)\n            </code></pre>\n<h3>Kết luận</h3>\n<p>Tối ưu hóa hiệu suất JavaScript là một quá trình liên tục. Bằng cách áp dụng các best practices này, bạn có thể cải thiện đáng kể tốc độ và hiệu quả của ứng dụng JavaScript của mình.</p>\n</article>\n</main>",
@@ -33,13 +34,14 @@
                 "name": "chantay"
             },
             "tags": [
+                   "blog"
             ],
             "date_published": "2024-12-29T21:03:53+07:00",
-            "date_modified": "2024-12-29T21:03:53+07:00"
+            "date_modified": "2024-12-30T16:13:55+07:00"
         },
         {
-            "id": "https://chantay123.github.io/MyBlog/java-concurrency-thread-safety-va-synchronization/",
-            "url": "https://chantay123.github.io/MyBlog/java-concurrency-thread-safety-va-synchronization/",
+            "id": "https://chantay123.github.io/MyBlog/java-concurrency-thread-safety-va-synchronization.html",
+            "url": "https://chantay123.github.io/MyBlog/java-concurrency-thread-safety-va-synchronization.html",
             "title": "Java Concurrency: Thread Safety và Synchronization",
             "summary": "1. Giới thiệu về Concurrency trong Java Concurrency trong Java cho phép&hellip;",
             "content_html": "<article class=\"post-content\">\n<h3>1. Giới thiệu về Concurrency trong Java</h3>\n<p>Concurrency trong Java cho phép thực hiện nhiều tác vụ đồng thời, tăng hiệu suất của ứng dụng. Tuy nhiên, nó cũng đặt ra các thách thức về thread safety và synchronization.</p>\n<h3>2. Thread Safety</h3>\n<p>Thread safety đảm bảo rằng một đoạn code hoặc dữ liệu có thể được truy cập an toàn bởi nhiều thread cùng một lúc.</p>\n<pre><code>\npublic class Counter {\n    private int count = 0;\n\n    public synchronized void increment() {\n        count++;\n    }\n\n    public synchronized int getCount() {\n        return count;\n    }\n}\n            </code></pre>\n<h3>3. Synchronization</h3>\n<p>Synchronization trong Java được sử dụng để kiểm soát truy cập vào các tài nguyên được chia sẻ bởi nhiều thread.</p>\n<pre><code>\npublic class SynchronizedMethod {\n    private int sum = 0;\n\n    public synchronized void add(int value) {\n        sum += value;\n    }\n\n    public int getSum() {\n        return sum;\n    }\n}\n            </code></pre>\n<h3>4. Volatile Keyword</h3>\n<p>Từ khóa volatile đảm bảo rằng các thay đổi đối với một biến được ngay lập tức hiển thị cho tất cả các thread.</p>\n<pre><code>\npublic class SharedObject {\n    private volatile boolean flag = false;\n\n    public void setFlag(boolean value) {\n        flag = value;\n    }\n\n    public boolean isFlag() {\n        return flag;\n    }\n}\n            </code></pre>\n<h3>5. Lock Interface</h3>\n<p>Java cung cấp interface Lock để có kiểm soát chi tiết hơn về synchronization.</p>\n<pre><code>\nimport java.util.concurrent.locks.Lock;\nimport java.util.concurrent.locks.ReentrantLock;\n\npublic class LockExample {\n    private Lock lock = new ReentrantLock();\n    private int count = 0;\n\n    public void increment() {\n        lock.lock();\n        try {\n            count++;\n        } finally {\n            lock.unlock();\n        }\n    }\n}\n            </code></pre>\n<h3>6. Atomic Classes</h3>\n<p>Java cung cấp các lớp atomic để thực hiện các hoạt động thread-safe mà không cần synchronization rõ ràng.</p>\n<pre><code>\nimport java.util.concurrent.atomic.AtomicInteger;\n\npublic class AtomicCounter {\n    private AtomicInteger count = new AtomicInteger(0);\n\n    public void increment() {\n        count.incrementAndGet();\n    }\n\n    public int getCount() {\n        return count.get();\n    }\n}\n            </code></pre>\n<h3>7. Thread Pools</h3>\n<p>Thread pools quản lý một nhóm worker threads, giúp tái sử dụng threads và giảm overhead của việc tạo threads mới.</p>\n<pre><code>\nimport java.util.concurrent.ExecutorService;\nimport java.util.concurrent.Executors;\n\npublic class ThreadPoolExample {\n    public static void main(String[] args) {\n        ExecutorService executor = Executors.newFixedThreadPool(5);\n        for (int i = 0; i &lt; 10; i++) {\n            Runnable worker = new WorkerThread(\"\" + i);\n            executor.execute(worker);\n        }\n        executor.shutdown();\n    }\n}\n            </code></pre>\n<h3>Kết luận</h3>\n<p class=\"align-left\">Concurrency trong Java là một chủ đề phức tạp nhưng quan trọng. Hiểu và áp dụng đúng các kỹ thuật thread safety và synchronization sẽ giúp bạn xây dựng các ứng dụng Java đa luồng hiệu quả và đáng tin cậy.</p>\n</article>",
@@ -47,13 +49,14 @@
                 "name": "chantay"
             },
             "tags": [
+                   "blog"
             ],
             "date_published": "2024-12-29T21:02:18+07:00",
-            "date_modified": "2024-12-29T21:02:18+07:00"
+            "date_modified": "2024-12-30T16:15:14+07:00"
         },
         {
-            "id": "https://chantay123.github.io/MyBlog/java-streams-api-xu-ly-du-lieu-hieu-qua/",
-            "url": "https://chantay123.github.io/MyBlog/java-streams-api-xu-ly-du-lieu-hieu-qua/",
+            "id": "https://chantay123.github.io/MyBlog/java-streams-api-xu-ly-du-lieu-hieu-qua.html",
+            "url": "https://chantay123.github.io/MyBlog/java-streams-api-xu-ly-du-lieu-hieu-qua.html",
             "title": "Java Streams API: Xử lý dữ liệu hiệu quả",
             "summary": "1. Giới thiệu về Java Streams API Java Streams API, được giới&hellip;",
             "content_html": "<article class=\"post-content\">\n<h3>1. Giới thiệu về Java Streams API</h3>\n<p>Java Streams API, được giới thiệu từ Java 8, cung cấp một cách mạnh mẽ và linh hoạt để xử lý và thao tác với các tập hợp dữ liệu.</p>\n<h3>2. Tạo Streams</h3>\n<p>Có nhiều cách để tạo một Stream:</p>\n<pre><code>\nList list = Arrays.asList(\"a\", \"b\", \"c\");\nStream streamFromList = list.stream();\n\nStream streamFromArray = Stream.of(\"a\", \"b\", \"c\");\n\nStream streamFromGenerate = Stream.generate(() -&gt; 1).limit(5);\n            </code></pre>\n<h3>3. Các phép toán trung gian</h3>\n<p>Streams hỗ trợ nhiều phép toán trung gian như filter, map, flatMap:</p>\n<pre><code>\nList myList = Arrays.asList(\"a1\", \"a2\", \"b1\", \"c2\", \"c1\");\n\nmyList.stream()\n      .filter(s -&gt; s.startsWith(\"c\"))\n      .map(String::toUpperCase)\n      .sorted()\n      .forEach(System.out::println);\n            </code></pre>\n<h3>4. Các phép toán đầu cuối</h3>\n<p>Các phép toán đầu cuối như collect, reduce, forEach kết thúc luồng xử lý của Stream:</p>\n<pre><code>\nList numbers = Arrays.asList(1, 2, 3, 4, 5);\n\nint sum = numbers.stream()\n                 .reduce(0, Integer::sum);\n\nList filtered = myList.stream()\n                              .filter(s -&gt; s.startsWith(\"a\"))\n                              .collect(Collectors.toList());\n            </code></pre>\n<h3>5. Parallel Streams</h3>\n<p>Java Streams API hỗ trợ xử lý song song, giúp tăng hiệu suất trên các bộ dữ liệu lớn:</p>\n<pre><code>\nlong count = myList.parallelStream()\n                   .filter(s -&gt; s.startsWith(\"c\"))\n                   .count();\n            </code></pre>\n<h3>6. Ví dụ thực tế</h3>\n<p>Giả sử chúng ta có một danh sách các giao dịch và muốn tìm ba giao dịch có giá trị cao nhất:</p>\n<pre><code>\nList transactions = getTransactions();\n\nList top3 = transactions.stream()\n    .sorted(Comparator.comparing(Transaction::getValue).reversed())\n    .limit(3)\n    .collect(Collectors.toList());\n            </code></pre>\n<h3>7. Lợi ích của Streams API</h3>\n<ul>\n<li>Code ngắn gọn và dễ đọc hơn</li>\n<li>Hỗ trợ xử lý song song một cách dễ dàng</li>\n<li>Lazy evaluation giúp tối ưu hiệu suất</li>\n<li>Dễ dàng kết hợp nhiều phép toán</li>\n</ul>\n<h3>Kết luận</h3>\n<p>Java Streams API cung cấp một cách mạnh mẽ và hiệu quả để xử lý dữ liệu trong Java. Bằng cách sử dụng Streams, bạn có thể viết code ngắn gọn hơn, dễ đọc hơn và trong nhiều trường hợp, hiệu quả hơn so với các phương pháp truyền thống.</p>\n</article>\n<footer>\n<p> </p>\n</footer>",
@@ -61,13 +64,14 @@
                 "name": "chantay"
             },
             "tags": [
+                   "blog"
             ],
             "date_published": "2024-12-29T20:53:56+07:00",
-            "date_modified": "2024-12-29T20:54:37+07:00"
+            "date_modified": "2024-12-30T16:17:22+07:00"
         },
         {
-            "id": "https://chantay123.github.io/MyBlog/javascript-functional-programming-map-filter-va-reduce/",
-            "url": "https://chantay123.github.io/MyBlog/javascript-functional-programming-map-filter-va-reduce/",
+            "id": "https://chantay123.github.io/MyBlog/javascript-functional-programming-map-filter-va-reduce.html",
+            "url": "https://chantay123.github.io/MyBlog/javascript-functional-programming-map-filter-va-reduce.html",
             "title": "JavaScript Functional Programming: Map, Filter, và Reduce",
             "summary": "1. Giới thiệu về Functional Programming Functional Programming là một phương pháp&hellip;",
             "content_html": "<header><nav></nav></header><main>\n<article class=\"post-content\">\n<h3>1. Giới thiệu về Functional Programming</h3>\n<p>Functional Programming là một phương pháp lập trình tập trung vào việc sử dụng các hàm để xử lý dữ liệu. JavaScript hỗ trợ nhiều khái niệm của functional programming, đặc biệt là thông qua các phương thức như map, filter, và reduce.</p>\n<h3>2. Map</h3>\n<p>Phương thức map() tạo một mảng mới với kết quả của việc gọi một hàm cho mọi phần tử trong mảng.</p>\n<pre><code>\nconst numbers = [1, 2, 3, 4, 5];\nconst doubled = numbers.map(num =&gt; num * 2);\nconsole.log(doubled); // [2, 4, 6, 8, 10]\n            </code></pre>\n<h3>3. Filter</h3>\n<p>Phương thức filter() tạo một mảng mới với tất cả các phần tử vượt qua bài kiểm tra được triển khai bởi hàm được cung cấp.</p>\n<pre><code>\nconst numbers = [1, 2, 3, 4, 5, 6];\nconst evenNumbers = numbers.filter(num =&gt; num % 2 === 0);\nconsole.log(evenNumbers); // [2, 4, 6]\n            </code></pre>\n<h3>4. Reduce</h3>\n<p>Phương thức reduce() thực thi một hàm reducer trên mỗi phần tử của mảng, trả về một giá trị duy nhất.</p>\n<pre><code>\nconst numbers = [1, 2, 3, 4, 5];\nconst sum = numbers.reduce((acc, cur) =&gt; acc + cur, 0);\nconsole.log(sum); // 15\n            </code></pre>\n<h3>5. Kết hợp Map, Filter, và Reduce</h3>\n<p>Các phương thức này có thể được kết hợp để tạo ra các biểu thức mạnh mẽ:</p>\n<pre><code>\nconst orders = [\n    { id: 1, total: 200 },\n    { id: 2, total: 300 },\n    { id: 3, total: 100 }\n];\n\nconst totalOfHighValueOrders = orders\n    .filter(order =&gt; order.total &gt; 100)\n    .map(order =&gt; order.total)\n    .reduce((acc, val) =&gt; acc + val, 0);\n\nconsole.log(totalOfHighValueOrders); // 500\n            </code></pre>\n<h3>6. Pure Functions</h3>\n<p>Functional programming khuyến khích sử dụng pure functions - các hàm không có side effects và luôn trả về cùng một kết quả cho cùng một đầu vào:</p>\n<pre><code>\n// Pure function\nfunction add(a, b) {\n    return a + b;\n}\n\n// Impure function (có side effect)\nlet total = 0;\nfunction addToTotal(value) {\n    total += value;\n}\n            </code></pre>\n<h3>7. Immutability</h3>\n<p>Immutability là một khái niệm quan trọng trong functional programming. Thay vì thay đổi dữ liệu, chúng ta tạo ra các bản sao mới với các thay đổi:</p>\n<pre><code>\nconst originalArray = [1, 2, 3];\nconst newArray = [...originalArray, 4]; // [1, 2, 3, 4]\n\nconst originalObject = { x: 1, y: 2 };\nconst newObject = { ...originalObject, z: 3 }; // { x: 1, y: 2, z: 3 }\n            </code></pre>\n<h3>Kết luận</h3>\n<p>Functional programming trong JavaScript, đặc biệt là việc sử dụng map, filter, và reduce, cung cấp một cách mạnh mẽ và biểu đạt để xử lý dữ liệu. Áp dụng các nguyên tắc này có thể dẫn đến code sạch hơn, dễ test hơn và ít lỗi hơn.</p>\n</article>\n</main>",
@@ -75,13 +79,14 @@
                 "name": "chantay"
             },
             "tags": [
+                   "blog"
             ],
             "date_published": "2024-12-29T20:53:15+07:00",
-            "date_modified": "2024-12-29T20:53:15+07:00"
+            "date_modified": "2024-12-30T16:17:48+07:00"
         },
         {
-            "id": "https://chantay123.github.io/MyBlog/java-generics-tang-cuong-tinh-linh-hoat-va-an-toan-kieu/",
-            "url": "https://chantay123.github.io/MyBlog/java-generics-tang-cuong-tinh-linh-hoat-va-an-toan-kieu/",
+            "id": "https://chantay123.github.io/MyBlog/java-generics-tang-cuong-tinh-linh-hoat-va-an-toan-kieu.html",
+            "url": "https://chantay123.github.io/MyBlog/java-generics-tang-cuong-tinh-linh-hoat-va-an-toan-kieu.html",
             "title": "Java Generics: Tăng cường tính linh hoạt và an toàn kiểu",
             "summary": "1. Giới thiệu về Generics Generics trong Java cho phép các lớp,&hellip;",
             "content_html": "<header><nav></nav></header><main>\n<article class=\"post-content\">\n<h3>1. Giới thiệu về Generics</h3>\n<p>Generics trong Java cho phép các lớp, interface và phương thức hoạt động với các kiểu dữ liệu khác nhau mà vẫn đảm bảo an toàn kiểu tại thời điểm biên dịch.</p>\n<h3>2. Sử dụng Generics với Classes</h3>\n<pre><code>\npublic class Box {\n    private T t;\n\n    public void set(T t) {\n        this.t = t;\n    }\n\n    public T get() {\n        return t;\n    }\n}\n\n// Sử dụng\nBox integerBox = new Box&lt;&gt;();\nintegerBox.set(10);\nInteger someInteger = integerBox.get();\n            </code></pre>\n<h3>3. Generics với Methods</h3>\n<pre><code>\npublic class Util {\n    public static &lt;K, V&gt; boolean compare(Pair&lt;K, V&gt; p1, Pair&lt;K, V&gt; p2) {\n        return p1.getKey().equals(p2.getKey()) &amp;&amp;\n               p1.getValue().equals(p2.getValue());\n    }\n}\n\n// Sử dụng\nPair&lt;Integer, String&gt; p1 = new Pair&lt;&gt;(1, \"apple\");\nPair&lt;Integer, String&gt; p2 = new Pair&lt;&gt;(2, \"pear\");\nboolean same = Util.&lt;Integer, String&gt;compare(p1, p2);\n            </code></pre>\n<h3>4. Bounded Type Parameters</h3>\n<p>Giới hạn các kiểu có thể được sử dụng làm tham số kiểu:</p>\n<pre><code>\npublic &gt; T findMax(List list) {\n    if (list.isEmpty()) {\n        return null;\n    }\n    T max = list.get(0);\n    for (T item : list) {\n        if (item.compareTo(max) &gt; 0) {\n            max = item;\n        }\n    }\n    return max;\n}\n            </code></pre>\n<h3>5. Wildcard Types</h3>\n<p>Sử dụng wildcard (?) khi không biết chính xác kiểu dữ liệu:</p>\n<pre><code>\npublic void printList(List&lt;?&gt; list) {\n    for (Object elem : list) {\n        System.out.print(elem + \" \");\n    }\n    System.out.println();\n}\n\n// Sử dụng\nList li = Arrays.asList(1, 2, 3);\nList ls = Arrays.asList(\"one\", \"two\", \"three\");\nprintList(li);\nprintList(ls);\n            </code></pre>\n<h3>6. Type Erasure</h3>\n<p>Java sử dụng type erasure để implement generics, nghĩa là thông tin kiểu generic bị xóa trong runtime:</p>\n<pre><code>\nList stringList = new ArrayList&lt;&gt;();\nList integerList = new ArrayList&lt;&gt;();\n\nSystem.out.println(stringList.getClass() == integerList.getClass()); // true\n            </code></pre>\n<h3>7. Lợi ích của Generics</h3>\n<ul>\n<li>An toàn kiểu tại thời điểm biên dịch</li>\n<li>Loại bỏ việc ép kiểu</li>\n<li>Cho phép implement các thuật toán chung</li>\n<li>Tăng khả năng tái sử dụng code</li>\n</ul>\n<h3>Kết luận</h3>\n<p>Generics là một tính năng mạnh mẽ trong Java, giúp tăng tính linh hoạt và an toàn cho code. Hiểu và sử dụng đúng Generics sẽ giúp bạn viết code Java hiệu quả, an toàn và dễ bảo trì hơn.</p>\n</article>\n</main>",
@@ -89,13 +94,14 @@
                 "name": "chantay"
             },
             "tags": [
+                   "blog"
             ],
             "date_published": "2024-12-29T20:52:37+07:00",
-            "date_modified": "2024-12-29T20:52:37+07:00"
+            "date_modified": "2024-12-30T16:18:19+07:00"
         },
         {
-            "id": "https://chantay123.github.io/MyBlog/javascript-modules-commonjs-va-es6-modules/",
-            "url": "https://chantay123.github.io/MyBlog/javascript-modules-commonjs-va-es6-modules/",
+            "id": "https://chantay123.github.io/MyBlog/javascript-modules-commonjs-va-es6-modules.html",
+            "url": "https://chantay123.github.io/MyBlog/javascript-modules-commonjs-va-es6-modules.html",
             "title": "JavaScript Modules: CommonJS và ES6 Modules",
             "summary": "1. Giới thiệu về Modules Modules trong JavaScript cho phép chia code&hellip;",
             "content_html": "<header><nav></nav></header><main>\n<article class=\"post-content\">\n<h3>1. Giới thiệu về Modules</h3>\n<p>Modules trong JavaScript cho phép chia code thành các phần nhỏ, độc lập và có thể tái sử dụng. Có hai hệ thống module chính: CommonJS và ES6 Modules.</p>\n<h3>2. CommonJS Modules</h3>\n<p>CommonJS là hệ thống module được sử dụng chủ yếu trong Node.js:</p>\n<pre><code>\n// math.js\nmodule.exports = {\n    add: function(a, b) {\n        return a + b;\n    },\n    subtract: function(a, b) {\n        return a - b;\n    }\n};\n\n// main.js\nconst math = require('./math');\nconsole.log(math.add(5, 3)); // 8\n            </code></pre>\n<h3>3. ES6 Modules</h3>\n<p>ES6 Modules là tiêu chuẩn mới cho JavaScript, được hỗ trợ trong trình duyệt hiện đại và Node.js:</p>\n<pre><code>\n// math.js\nexport function add(a, b) {\n    return a + b;\n}\n\nexport function subtract(a, b) {\n    return a - b;\n}\n\n// main.js\nimport { add, subtract } from './math.js';\nconsole.log(add(5, 3)); // 8\n            </code></pre>\n<h3>4. Default Exports và Named Exports</h3>\n<p>ES6 Modules hỗ trợ cả default exports và named exports:</p>\n<pre><code>\n// Default export\nexport default function sayHello(name) {\n    console.log(`Hello, ${name}!`);\n}\n\n// Named exports\nexport const PI = 3.14159;\nexport function square(x) {\n    return x * x;\n}\n\n// Importing\nimport sayHello, { PI, square } from './module.js';\n            </code></pre>\n<h3>5. Dynamic Imports</h3>\n<p>ES6 Modules cũng hỗ trợ dynamic imports:</p>\n<pre><code>\nasync function loadModule() {\n    const module = await import('./dynamicModule.js');\n    module.doSomething();\n}\n            </code></pre>\n<h3>6. Sự khác biệt giữa CommonJS và ES6 Modules</h3>\n<ul>\n<li>Cú pháp: require() vs import/export</li>\n<li>Thời điểm tải: CommonJS tải động, ES6 Modules tải tĩnh</li>\n<li>Hỗ trợ: CommonJS chủ yếu trong Node.js, ES6 Modules được hỗ trợ rộng rãi hơn</li>\n</ul>\n<h3>Kết luận</h3>\n<p>Modules là một phần quan trọng của JavaScript hiện đại, giúp tổ chức code tốt hơn và tăng khả năng tái sử dụng. Hiểu và sử dụng đúng cách các hệ thống module sẽ giúp bạn viết code JavaScript hiệu quả và dễ bảo trì hơn.</p>\n</article>\n</main>",
@@ -103,13 +109,14 @@
                 "name": "chantay"
             },
             "tags": [
+                   "blog"
             ],
             "date_published": "2024-12-29T20:51:49+07:00",
-            "date_modified": "2024-12-29T20:51:49+07:00"
+            "date_modified": "2024-12-30T16:18:46+07:00"
         },
         {
-            "id": "https://chantay123.github.io/MyBlog/java-design-patterns-singleton-factory-va-observer/",
-            "url": "https://chantay123.github.io/MyBlog/java-design-patterns-singleton-factory-va-observer/",
+            "id": "https://chantay123.github.io/MyBlog/java-design-patterns-singleton-factory-va-observer.html",
+            "url": "https://chantay123.github.io/MyBlog/java-design-patterns-singleton-factory-va-observer.html",
             "title": "Java Design Patterns: Singleton, Factory, và Observer",
             "summary": "1. Giới thiệu về Design Patterns Design patterns là các giải pháp&hellip;",
             "content_html": "<header><nav></nav></header><main>\n<article class=\"post-content\">\n<h3>1. Giới thiệu về Design Patterns</h3>\n<p>Design patterns là các giải pháp tái sử dụng cho các vấn đề phổ biến trong thiết kế phần mềm. Chúng giúp tạo ra code dễ bảo trì và mở rộng.</p>\n<h3>2. Singleton Pattern</h3>\n<p>Singleton đảm bảo một class chỉ có một instance và cung cấp một điểm truy cập toàn cục đến nó.</p>\n<pre><code>\npublic class Singleton {\n    private static Singleton instance;\n    \n    private Singleton() {}\n    \n    public static Singleton getInstance() {\n        if (instance == null) {\n            instance = new Singleton();\n        }\n        return instance;\n    }\n}\n            </code></pre>\n<h3>3. Factory Pattern</h3>\n<p>Factory Pattern định nghĩa một interface để tạo đối tượng trong lớp cha, nhưng cho phép các lớp con quyết định lớp nào sẽ được khởi tạo.</p>\n<pre><code>\ninterface Animal {\n    void makeSound();\n}\n\nclass Dog implements Animal {\n    public void makeSound() {\n        System.out.println(\"Woof\");\n    }\n}\n\nclass Cat implements Animal {\n    public void makeSound() {\n        System.out.println(\"Meow\");\n    }\n}\n\nclass AnimalFactory {\n    public Animal getAnimal(String animalType) {\n        if (animalType == null) {\n            return null;\n        }\n        if (animalType.equalsIgnoreCase(\"DOG\")) {\n            return new Dog();\n        } else if (animalType.equalsIgnoreCase(\"CAT\")) {\n            return new Cat();\n        }\n        return null;\n    }\n}\n            </code></pre>\n<h3>4. Observer Pattern</h3>\n<p>Observer Pattern định nghĩa một sự phụ thuộc một-nhiều giữa các đối tượng để khi một đối tượng thay đổi trạng thái, tất cả các phụ thuộc của nó được thông báo và cập nhật tự động.</p>\n<pre><code>\nimport java.util.ArrayList;\nimport java.util.List;\n\ninterface Observer {\n    void update(String message);\n}\n\nclass Subject {\n    private List observers = new ArrayList&lt;&gt;();\n    private String state;\n\n    public void setState(String state) {\n        this.state = state;\n        notifyAllObservers();\n    }\n\n    public void attach(Observer observer) {\n        observers.add(observer);\n    }\n\n    public void notifyAllObservers() {\n        for (Observer observer : observers) {\n            observer.update(state);\n        }\n    }\n}\n\nclass ConcreteObserver implements Observer {\n    private String name;\n\n    public ConcreteObserver(String name) {\n        this.name = name;\n    }\n\n    @Override\n    public void update(String message) {\n        System.out.println(name + \" received: \" + message);\n    }\n}\n            </code></pre>\n<h3>5. Sử dụng Design Patterns</h3>\n<p>Ví dụ sử dụng các pattern trên:</p>\n<pre><code>\npublic class Main {\n    public static void main(String[] args) {\n        // Singleton\n        Singleton singleton = Singleton.getInstance();\n\n        // Factory\n        AnimalFactory factory = new AnimalFactory();\n        Animal dog = factory.getAnimal(\"DOG\");\n        dog.makeSound();\n\n        // Observer\n        Subject subject = new Subject();\n        new ConcreteObserver(\"Observer 1\");\n        new ConcreteObserver(\"Observer 2\");\n\n        subject.setState(\"New State\");\n    }\n}\n            </code></pre>\n<h3>Kết luận</h3>\n<p>Design patterns là công cụ quan trọng trong việc thiết kế phần mềm. Hiểu và áp dụng đúng các pattern sẽ giúp bạn tạo ra code có cấu trúc tốt, dễ bảo trì và mở rộng.</p>\n</article>\n</main>",
@@ -117,13 +124,14 @@
                 "name": "chantay"
             },
             "tags": [
+                   "blog"
             ],
             "date_published": "2024-12-29T20:49:56+07:00",
-            "date_modified": "2024-12-29T20:49:56+07:00"
+            "date_modified": "2024-12-30T16:19:28+07:00"
         },
         {
-            "id": "https://chantay123.github.io/MyBlog/javascript-asynchronous-programming-promises-asyncawait/",
-            "url": "https://chantay123.github.io/MyBlog/javascript-asynchronous-programming-promises-asyncawait/",
+            "id": "https://chantay123.github.io/MyBlog/javascript-asynchronous-programming-promises-asyncawait.html",
+            "url": "https://chantay123.github.io/MyBlog/javascript-asynchronous-programming-promises-asyncawait.html",
             "title": "JavaScript Asynchronous Programming: Promises, Async/Await",
             "summary": "1. Giới thiệu về Asynchronous Programming Lập trình bất đồng bộ cho&hellip;",
             "content_html": "<header><nav></nav></header><main>\n<article class=\"post-content\">\n<h2> </h2>\n<h3>1. Giới thiệu về Asynchronous Programming</h3>\n<p>Lập trình bất đồng bộ cho phép thực hiện các tác vụ mà không chặn luồng thực thi chính của chương trình.</p>\n<h3>2. Callbacks</h3>\n<p>Callbacks là cách truyền thống để xử lý bất đồng bộ trong JavaScript:</p>\n<pre><code>\nfunction fetchData(callback) {\n    setTimeout(() =&gt; {\n        callback('Data fetched');\n    }, 1000);\n}\n\nfetchData((result) =&gt; {\n    console.log(result);\n});\n            </code></pre>\n<h3>3. Promises</h3>\n<p>Promises cung cấp một cách tốt hơn để xử lý các hoạt động bất đồng bộ:</p>\n<pre><code>\nfunction fetchData() {\n    return new Promise((resolve, reject) =&gt; {\n        setTimeout(() =&gt; {\n            resolve('Data fetched');\n        }, 1000);\n    });\n}\n\nfetchData()\n    .then(result =&gt; console.log(result))\n    .catch(error =&gt; console.error(error));\n            </code></pre>\n<h3>4. Async/Await</h3>\n<p>Async/Await là một cú pháp \"syntactic sugar\" cho Promises, giúp code dễ đọc hơn:</p>\n<pre><code>\nasync function getData() {\n    try {\n        const result = await fetchData();\n        console.log(result);\n    } catch (error) {\n        console.error(error);\n    }\n}\n\ngetData();\n            </code></pre>\n<h3>5. Promise.all()</h3>\n<p>Promise.all() cho phép xử lý nhiều Promises cùng một lúc:</p>\n<pre><code>\nconst promise1 = Promise.resolve(3);\nconst promise2 = new Promise((resolve) =&gt; setTimeout(() =&gt; resolve('foo'), 100));\n\nPromise.all([promise1, promise2])\n    .then((values) =&gt; {\n        console.log(values); // [3, 'foo']\n    });\n            </code></pre>\n<h3>6. Xử lý lỗi</h3>\n<p>Xử lý lỗi trong async/await sử dụng try/catch:</p>\n<pre><code>\nasync function fetchAndProcessData() {\n    try {\n        const rawData = await fetchData();\n        const processedData = await processData(rawData);\n        return processedData;\n    } catch (error) {\n        console.error('An error occurred:', error);\n        throw error;\n    }\n}\n            </code></pre>\n<h3>Kết luận</h3>\n<p>Lập trình bất đồng bộ là một phần quan trọng của JavaScript. Promises và async/await cung cấp các công cụ mạnh mẽ để xử lý các tác vụ bất đồng bộ một cách hiệu quả và dễ đọc.</p>\n</article>\n</main>",
@@ -131,13 +139,14 @@
                 "name": "chantay"
             },
             "tags": [
+                   "blog"
             ],
             "date_published": "2024-12-29T20:49:10+07:00",
-            "date_modified": "2024-12-29T20:49:10+07:00"
+            "date_modified": "2024-12-30T16:19:50+07:00"
         },
         {
-            "id": "https://chantay123.github.io/MyBlog/java-collections-framework-tong-quan-va-su-dung/",
-            "url": "https://chantay123.github.io/MyBlog/java-collections-framework-tong-quan-va-su-dung/",
+            "id": "https://chantay123.github.io/MyBlog/java-collections-framework-tong-quan-va-su-dung.html",
+            "url": "https://chantay123.github.io/MyBlog/java-collections-framework-tong-quan-va-su-dung.html",
             "title": "Java Collections Framework: Tổng quan và Sử dụng",
             "summary": "1. Giới thiệu về Java Collections Framework Java Collections Framework cung cấp&hellip;",
             "content_html": "<header></header><main>\n<article class=\"post-content\">\n<h2> </h2>\n<h3>1. Giới thiệu về Java Collections Framework</h3>\n<p>Java Collections Framework cung cấp một kiến trúc để lưu trữ và thao tác với các nhóm đối tượng. Nó bao gồm các interface, các lớp triển khai và các thuật toán.</p>\n<h3>2. Các Interface chính</h3>\n<ul>\n<li>Collection: Interface gốc của framework</li>\n<li>List: Một collection có thứ tự</li>\n<li>Set: Một collection không chứa các phần tử trùng lặp</li>\n<li>Map: Ánh xạ các key tới các value</li>\n</ul>\n<h3>3. Các Lớp triển khai phổ biến</h3>\n<pre><code>\n// ArrayList\nList arrayList = new ArrayList&lt;&gt;();\narrayList.add(\"Java\");\narrayList.add(\"Python\");\n\n// LinkedList\nList linkedList = new LinkedList&lt;&gt;();\nlinkedList.add(\"C++\");\nlinkedList.add(\"JavaScript\");\n\n// HashSet\nSet hashSet = new HashSet&lt;&gt;();\nhashSet.add(1);\nhashSet.add(2);\n\n// HashMap\nMap&lt;String, Integer&gt; hashMap = new HashMap&lt;&gt;();\nhashMap.put(\"One\", 1);\nhashMap.put(\"Two\", 2);\n            </code></pre>\n<h3>4. Sử dụng Iterator</h3>\n<p>Iterator là một interface được sử dụng để duyệt qua các phần tử của collection:</p>\n<pre><code>\nList list = Arrays.asList(\"Java\", \"Python\", \"C++\");\nIterator iterator = list.iterator();\nwhile (iterator.hasNext()) {\n    System.out.println(iterator.next());\n}\n            </code></pre>\n<h3>5. Sắp xếp Collections</h3>\n<p>Java cung cấp các phương thức để sắp xếp collections:</p>\n<pre><code>\nList numbers = Arrays.asList(3, 1, 4, 1, 5, 9);\nCollections.sort(numbers);\nSystem.out.println(numbers); // [1, 1, 3, 4, 5, 9]\n\n// Sắp xếp với Comparator\nCollections.sort(numbers, (a, b) -&gt; b.compareTo(a));\nSystem.out.println(numbers); // [9, 5, 4, 3, 1, 1]\n            </code></pre>\n<h3>6. Stream API</h3>\n<p>Java 8 giới thiệu Stream API, cung cấp một cách mạnh mẽ để xử lý collections:</p>\n<pre><code>\nList names = Arrays.asList(\"Alice\", \"Bob\", \"Charlie\", \"David\");\nnames.stream()\n     .filter(name -&gt; name.startsWith(\"C\"))\n     .map(String::toUpperCase)\n     .forEach(System.out::println);\n            </code></pre>\n<h3>Kết luận</h3>\n<p>Java Collections Framework là một công cụ mạnh mẽ cho việc quản lý và xử lý dữ liệu. Hiểu và sử dụng hiệu quả framework này sẽ giúp bạn viết code Java hiệu quả và tối ưu hơn.</p>\n</article>\n</main>",
@@ -145,9 +154,10 @@
                 "name": "chantay"
             },
             "tags": [
+                   "blog"
             ],
             "date_published": "2024-12-29T20:44:36+07:00",
-            "date_modified": "2024-12-29T20:44:48+07:00"
+            "date_modified": "2024-12-30T16:20:18+07:00"
         }
     ]
 }

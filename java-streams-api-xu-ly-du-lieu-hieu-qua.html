@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="en-gb"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Java Streams API: Xử lý dữ liệu hiệu quả - Tây</title><meta name="description" content="1. Giới thiệu về Java Streams API Java Streams API, được giới&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://chantay123.github.io/MyBlog/java-streams-api-xu-ly-du-lieu-hieu-qua.html"><link rel="alternate" type="application/atom+xml" href="https://chantay123.github.io/MyBlog/feed.xml"><link rel="alternate" type="application/json" href="https://chantay123.github.io/MyBlog/feed.json"><meta property="og:title" content="Java Streams API: Xử lý dữ liệu hiệu quả"><meta property="og:site_name" content="Tây"><meta property="og:description" content="1. Giới thiệu về Java Streams API Java Streams API, được giới&hellip;"><meta property="og:url" content="https://chantay123.github.io/MyBlog/java-streams-api-xu-ly-du-lieu-hieu-qua.html"><meta property="og:type" content="article"><link rel="stylesheet" href="https://chantay123.github.io/MyBlog/assets/css/style.css?v=fcd2aaaabea4ee6543ab48c0ada756d6"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://chantay123.github.io/MyBlog/java-streams-api-xu-ly-du-lieu-hieu-qua.html"},"headline":"Java Streams API: Xử lý dữ liệu hiệu quả","datePublished":"2024-12-29T20:53+07:00","dateModified":"2024-12-30T16:17+07:00","description":"1. Giới thiệu về Java Streams API Java Streams API, được giới&hellip;","author":{"@type":"Person","name":"chantay","url":"https://chantay123.github.io/MyBlog/authors/chantay/"},"publisher":{"@type":"Organization","name":"chantay"}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript></head><body class="post-template"><div class="container"><header class="header" id="js-header"><a href="https://chantay123.github.io/MyBlog/" class="logo">Tây</a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://chantay123.github.io/MyBlog/" target="_self">Home</a></li><li><a href="https://chantay123.github.io/MyBlog/my-blogs.html" target="_self">My Blogs</a></li><li><a href="https://chantay123.github.io/MyBlog/profile-ca-nhan.html" target="_self">About</a></li></ul></nav></header><main class="post"><article class="content wrapper"><header class="hero"><h1 class="content__title">Java Streams API: Xử lý dữ liệu hiệu quả</h1></header><div class="content__entry"><article class="post-content"><h3>1. Giới thiệu về Java Streams API</h3><p>Java Streams API, được giới thiệu từ Java 8, cung cấp một cách mạnh mẽ và linh hoạt để xử lý và thao tác với các tập hợp dữ liệu.</p><h3>2. Tạo Streams</h3><p>Có nhiều cách để tạo một Stream:</p><pre><code>
+List list = Arrays.asList("a", "b", "c");
+Stream streamFromList = list.stream();
+
+Stream streamFromArray = Stream.of("a", "b", "c");
+
+Stream streamFromGenerate = Stream.generate(() -&gt; 1).limit(5);
+            </code></pre><h3>3. Các phép toán trung gian</h3><p>Streams hỗ trợ nhiều phép toán trung gian như filter, map, flatMap:</p><pre><code>
+List myList = Arrays.asList("a1", "a2", "b1", "c2", "c1");
+
+myList.stream()
+      .filter(s -&gt; s.startsWith("c"))
+      .map(String::toUpperCase)
+      .sorted()
+      .forEach(System.out::println);
+            </code></pre><h3>4. Các phép toán đầu cuối</h3><p>Các phép toán đầu cuối như collect, reduce, forEach kết thúc luồng xử lý của Stream:</p><pre><code>
+List numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+int sum = numbers.stream()
+                 .reduce(0, Integer::sum);
+
+List filtered = myList.stream()
+                              .filter(s -&gt; s.startsWith("a"))
+                              .collect(Collectors.toList());
+            </code></pre><h3>5. Parallel Streams</h3><p>Java Streams API hỗ trợ xử lý song song, giúp tăng hiệu suất trên các bộ dữ liệu lớn:</p><pre><code>
+long count = myList.parallelStream()
+                   .filter(s -&gt; s.startsWith("c"))
+                   .count();
+            </code></pre><h3>6. Ví dụ thực tế</h3><p>Giả sử chúng ta có một danh sách các giao dịch và muốn tìm ba giao dịch có giá trị cao nhất:</p><pre><code>
+List transactions = getTransactions();
+
+List top3 = transactions.stream()
+    .sorted(Comparator.comparing(Transaction::getValue).reversed())
+    .limit(3)
+    .collect(Collectors.toList());
+            </code></pre><h3>7. Lợi ích của Streams API</h3><ul><li>Code ngắn gọn và dễ đọc hơn</li><li>Hỗ trợ xử lý song song một cách dễ dàng</li><li>Lazy evaluation giúp tối ưu hiệu suất</li><li>Dễ dàng kết hợp nhiều phép toán</li></ul><h3>Kết luận</h3><p>Java Streams API cung cấp một cách mạnh mẽ và hiệu quả để xử lý dữ liệu trong Java. Bằng cách sử dụng Streams, bạn có thể viết code ngắn gọn hơn, dễ đọc hơn và trong nhiều trường hợp, hiệu quả hơn so với các phương pháp truyền thống.</p></article><footer><p> </p></footer></div><footer class="content__footer"><div class="content__last-updated">This article was updated on December 30, 2024</div><div class="content__footer__col"><ul class="content__tag"><li><a href="https://chantay123.github.io/MyBlog/tags/blog/">blog</a></li></ul><div class="content__share"></div></div><nav class="content__nav"><div class="content__nav__prev">Previous Post<h5><a href="https://chantay123.github.io/MyBlog/javascript-functional-programming-map-filter-va-reduce.html" class="invert" rel="prev">JavaScript Functional Programming: Map, Filter, và Reduce</a></h5></div><div class="content__nav__next">Next Post<h5><a href="https://chantay123.github.io/MyBlog/java-concurrency-thread-safety-va-synchronization.html" class="invert" rel="next">Java Concurrency: Thread Safety và Synchronization</a></h5></div></nav></footer></article></main><footer class="footer"><div class="footer__copyright">Powered by Publii</div></footer></div><script defer="defer" src="https://chantay123.github.io/MyBlog/assets/js/scripts.min.js?v=4268bfae06e330d473c424d50f09abda"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.navbar'};</script><script>/*<![CDATA[*/var images=document.querySelectorAll("img[loading]");for(var i=0;i<images.length;i++){if(images[i].complete){images[i].classList.add("is-loaded")}else{images[i].addEventListener("load",function(){this.classList.add("is-loaded")},false)}};/*]]>*/</script></body></html>

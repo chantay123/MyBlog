@@ -3,7 +3,7 @@
     <title>Tây</title>
     <link href="https://chantay123.github.io/MyBlog/feed.xml" rel="self" />
     <link href="https://chantay123.github.io/MyBlog" />
-    <updated>2024-12-29T21:05:12+07:00</updated>
+    <updated>2024-12-30T16:20:18+07:00</updated>
     <author>
         <name>chantay</name>
     </author>
@@ -14,8 +14,9 @@
         <author>
             <name>chantay</name>
         </author>
-        <link href="https://chantay123.github.io/MyBlog/gioi-thieu-tong-quat-ve-ngon-ngu-javascript/"/>
-        <id>https://chantay123.github.io/MyBlog/gioi-thieu-tong-quat-ve-ngon-ngu-javascript/</id>
+        <link href="https://chantay123.github.io/MyBlog/gioi-thieu-tong-quat-ve-ngon-ngu-javascript.html"/>
+        <id>https://chantay123.github.io/MyBlog/gioi-thieu-tong-quat-ve-ngon-ngu-javascript.html</id>
+            <category term="blog"/>
 
         <updated>2024-12-29T21:05:12+07:00</updated>
             <summary>
@@ -34,8 +35,9 @@
         <author>
             <name>chantay</name>
         </author>
-        <link href="https://chantay123.github.io/MyBlog/javascript-performance-optimization-best-practices/"/>
-        <id>https://chantay123.github.io/MyBlog/javascript-performance-optimization-best-practices/</id>
+        <link href="https://chantay123.github.io/MyBlog/javascript-performance-optimization-best-practices.html"/>
+        <id>https://chantay123.github.io/MyBlog/javascript-performance-optimization-best-practices.html</id>
+            <category term="blog"/>
 
         <updated>2024-12-29T21:03:53+07:00</updated>
             <summary>
@@ -179,8 +181,9 @@ console.log(expensiveFunction(4)); // 16 (cached)
         <author>
             <name>chantay</name>
         </author>
-        <link href="https://chantay123.github.io/MyBlog/java-concurrency-thread-safety-va-synchronization/"/>
-        <id>https://chantay123.github.io/MyBlog/java-concurrency-thread-safety-va-synchronization/</id>
+        <link href="https://chantay123.github.io/MyBlog/java-concurrency-thread-safety-va-synchronization.html"/>
+        <id>https://chantay123.github.io/MyBlog/java-concurrency-thread-safety-va-synchronization.html</id>
+            <category term="blog"/>
 
         <updated>2024-12-29T21:02:18+07:00</updated>
             <summary>
@@ -303,8 +306,9 @@ public class ThreadPoolExample {
         <author>
             <name>chantay</name>
         </author>
-        <link href="https://chantay123.github.io/MyBlog/java-streams-api-xu-ly-du-lieu-hieu-qua/"/>
-        <id>https://chantay123.github.io/MyBlog/java-streams-api-xu-ly-du-lieu-hieu-qua/</id>
+        <link href="https://chantay123.github.io/MyBlog/java-streams-api-xu-ly-du-lieu-hieu-qua.html"/>
+        <id>https://chantay123.github.io/MyBlog/java-streams-api-xu-ly-du-lieu-hieu-qua.html</id>
+            <category term="blog"/>
 
         <updated>2024-12-29T20:53:56+07:00</updated>
             <summary>
@@ -388,8 +392,9 @@ List top3 = transactions.stream()
         <author>
             <name>chantay</name>
         </author>
-        <link href="https://chantay123.github.io/MyBlog/javascript-functional-programming-map-filter-va-reduce/"/>
-        <id>https://chantay123.github.io/MyBlog/javascript-functional-programming-map-filter-va-reduce/</id>
+        <link href="https://chantay123.github.io/MyBlog/javascript-functional-programming-map-filter-va-reduce.html"/>
+        <id>https://chantay123.github.io/MyBlog/javascript-functional-programming-map-filter-va-reduce.html</id>
+            <category term="blog"/>
 
         <updated>2024-12-29T20:53:15+07:00</updated>
             <summary>
@@ -475,8 +480,9 @@ const newObject = { ...originalObject, z: 3 }; // { x: 1, y: 2, z: 3 }
         <author>
             <name>chantay</name>
         </author>
-        <link href="https://chantay123.github.io/MyBlog/java-generics-tang-cuong-tinh-linh-hoat-va-an-toan-kieu/"/>
-        <id>https://chantay123.github.io/MyBlog/java-generics-tang-cuong-tinh-linh-hoat-va-an-toan-kieu/</id>
+        <link href="https://chantay123.github.io/MyBlog/java-generics-tang-cuong-tinh-linh-hoat-va-an-toan-kieu.html"/>
+        <id>https://chantay123.github.io/MyBlog/java-generics-tang-cuong-tinh-linh-hoat-va-an-toan-kieu.html</id>
+            <category term="blog"/>
 
         <updated>2024-12-29T20:52:37+07:00</updated>
             <summary>
@@ -582,8 +588,9 @@ System.out.println(stringList.getClass() == integerList.getClass()); // true
         <author>
             <name>chantay</name>
         </author>
-        <link href="https://chantay123.github.io/MyBlog/javascript-modules-commonjs-va-es6-modules/"/>
-        <id>https://chantay123.github.io/MyBlog/javascript-modules-commonjs-va-es6-modules/</id>
+        <link href="https://chantay123.github.io/MyBlog/javascript-modules-commonjs-va-es6-modules.html"/>
+        <id>https://chantay123.github.io/MyBlog/javascript-modules-commonjs-va-es6-modules.html</id>
+            <category term="blog"/>
 
         <updated>2024-12-29T20:51:49+07:00</updated>
             <summary>
@@ -673,8 +680,9 @@ async function loadModule() {
         <author>
             <name>chantay</name>
         </author>
-        <link href="https://chantay123.github.io/MyBlog/java-design-patterns-singleton-factory-va-observer/"/>
-        <id>https://chantay123.github.io/MyBlog/java-design-patterns-singleton-factory-va-observer/</id>
+        <link href="https://chantay123.github.io/MyBlog/java-design-patterns-singleton-factory-va-observer.html"/>
+        <id>https://chantay123.github.io/MyBlog/java-design-patterns-singleton-factory-va-observer.html</id>
+            <category term="blog"/>
 
         <updated>2024-12-29T20:49:56+07:00</updated>
             <summary>
@@ -814,8 +822,9 @@ public class Main {
         <author>
             <name>chantay</name>
         </author>
-        <link href="https://chantay123.github.io/MyBlog/javascript-asynchronous-programming-promises-asyncawait/"/>
-        <id>https://chantay123.github.io/MyBlog/javascript-asynchronous-programming-promises-asyncawait/</id>
+        <link href="https://chantay123.github.io/MyBlog/javascript-asynchronous-programming-promises-asyncawait.html"/>
+        <id>https://chantay123.github.io/MyBlog/javascript-asynchronous-programming-promises-asyncawait.html</id>
+            <category term="blog"/>
 
         <updated>2024-12-29T20:49:10+07:00</updated>
             <summary>
@@ -909,8 +918,9 @@ async function fetchAndProcessData() {
         <author>
             <name>chantay</name>
         </author>
-        <link href="https://chantay123.github.io/MyBlog/java-collections-framework-tong-quan-va-su-dung/"/>
-        <id>https://chantay123.github.io/MyBlog/java-collections-framework-tong-quan-va-su-dung/</id>
+        <link href="https://chantay123.github.io/MyBlog/java-collections-framework-tong-quan-va-su-dung.html"/>
+        <id>https://chantay123.github.io/MyBlog/java-collections-framework-tong-quan-va-su-dung.html</id>
+            <category term="blog"/>
 
         <updated>2024-12-29T20:44:36+07:00</updated>
             <summary>

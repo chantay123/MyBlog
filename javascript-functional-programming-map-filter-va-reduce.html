@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en-gb"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JavaScript Functional Programming: Map, Filter, và Reduce - Tây</title><meta name="description" content="1. Giới thiệu về Functional Programming Functional Programming là một phương pháp&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://chantay123.github.io/MyBlog/javascript-functional-programming-map-filter-va-reduce.html"><link rel="alternate" type="application/atom+xml" href="https://chantay123.github.io/MyBlog/feed.xml"><link rel="alternate" type="application/json" href="https://chantay123.github.io/MyBlog/feed.json"><meta property="og:title" content="JavaScript Functional Programming: Map, Filter, và Reduce"><meta property="og:site_name" content="Tây"><meta property="og:description" content="1. Giới thiệu về Functional Programming Functional Programming là một phương pháp&hellip;"><meta property="og:url" content="https://chantay123.github.io/MyBlog/javascript-functional-programming-map-filter-va-reduce.html"><meta property="og:type" content="article"><link rel="stylesheet" href="https://chantay123.github.io/MyBlog/assets/css/style.css?v=fcd2aaaabea4ee6543ab48c0ada756d6"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://chantay123.github.io/MyBlog/javascript-functional-programming-map-filter-va-reduce.html"},"headline":"JavaScript Functional Programming: Map, Filter, và Reduce","datePublished":"2024-12-29T20:53+07:00","dateModified":"2024-12-30T16:17+07:00","description":"1. Giới thiệu về Functional Programming Functional Programming là một phương pháp&hellip;","author":{"@type":"Person","name":"chantay","url":"https://chantay123.github.io/MyBlog/authors/chantay/"},"publisher":{"@type":"Organization","name":"chantay"}}</script><noscript><style>img[loading] {
+                    opacity: 1;
+                }</style></noscript></head><body class="post-template"><div class="container"><header class="header" id="js-header"><a href="https://chantay123.github.io/MyBlog/" class="logo">Tây</a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://chantay123.github.io/MyBlog/" target="_self">Home</a></li><li><a href="https://chantay123.github.io/MyBlog/my-blogs.html" target="_self">My Blogs</a></li><li><a href="https://chantay123.github.io/MyBlog/profile-ca-nhan.html" target="_self">About</a></li></ul></nav></header><main class="post"><article class="content wrapper"><header class="hero"><h1 class="content__title">JavaScript Functional Programming: Map, Filter, và Reduce</h1></header><div class="content__entry"><header><nav></nav></header><main><article class="post-content"><h3>1. Giới thiệu về Functional Programming</h3><p>Functional Programming là một phương pháp lập trình tập trung vào việc sử dụng các hàm để xử lý dữ liệu. JavaScript hỗ trợ nhiều khái niệm của functional programming, đặc biệt là thông qua các phương thức như map, filter, và reduce.</p><h3>2. Map</h3><p>Phương thức map() tạo một mảng mới với kết quả của việc gọi một hàm cho mọi phần tử trong mảng.</p><pre><code>
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map(num =&gt; num * 2);
+console.log(doubled); // [2, 4, 6, 8, 10]
+            </code></pre><h3>3. Filter</h3><p>Phương thức filter() tạo một mảng mới với tất cả các phần tử vượt qua bài kiểm tra được triển khai bởi hàm được cung cấp.</p><pre><code>
+const numbers = [1, 2, 3, 4, 5, 6];
+const evenNumbers = numbers.filter(num =&gt; num % 2 === 0);
+console.log(evenNumbers); // [2, 4, 6]
+            </code></pre><h3>4. Reduce</h3><p>Phương thức reduce() thực thi một hàm reducer trên mỗi phần tử của mảng, trả về một giá trị duy nhất.</p><pre><code>
+const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.reduce((acc, cur) =&gt; acc + cur, 0);
+console.log(sum); // 15
+            </code></pre><h3>5. Kết hợp Map, Filter, và Reduce</h3><p>Các phương thức này có thể được kết hợp để tạo ra các biểu thức mạnh mẽ:</p><pre><code>
+const orders = [
+    { id: 1, total: 200 },
+    { id: 2, total: 300 },
+    { id: 3, total: 100 }
+];
+
+const totalOfHighValueOrders = orders
+    .filter(order =&gt; order.total &gt; 100)
+    .map(order =&gt; order.total)
+    .reduce((acc, val) =&gt; acc + val, 0);
+
+console.log(totalOfHighValueOrders); // 500
+            </code></pre><h3>6. Pure Functions</h3><p>Functional programming khuyến khích sử dụng pure functions - các hàm không có side effects và luôn trả về cùng một kết quả cho cùng một đầu vào:</p><pre><code>
+// Pure function
+function add(a, b) {
+    return a + b;
+}
+
+// Impure function (có side effect)
+let total = 0;
+function addToTotal(value) {
+    total += value;
+}
+            </code></pre><h3>7. Immutability</h3><p>Immutability là một khái niệm quan trọng trong functional programming. Thay vì thay đổi dữ liệu, chúng ta tạo ra các bản sao mới với các thay đổi:</p><pre><code>
+const originalArray = [1, 2, 3];
+const newArray = [...originalArray, 4]; // [1, 2, 3, 4]
+
+const originalObject = { x: 1, y: 2 };
+const newObject = { ...originalObject, z: 3 }; // { x: 1, y: 2, z: 3 }
+            </code></pre><h3>Kết luận</h3><p>Functional programming trong JavaScript, đặc biệt là việc sử dụng map, filter, và reduce, cung cấp một cách mạnh mẽ và biểu đạt để xử lý dữ liệu. Áp dụng các nguyên tắc này có thể dẫn đến code sạch hơn, dễ test hơn và ít lỗi hơn.</p></article></main></div><footer class="content__footer"><div class="content__last-updated">This article was updated on December 30, 2024</div><div class="content__footer__col"><ul class="content__tag"><li><a href="https://chantay123.github.io/MyBlog/tags/blog/">blog</a></li></ul><div class="content__share"></div></div><nav class="content__nav"><div class="content__nav__prev">Previous Post<h5><a href="https://chantay123.github.io/MyBlog/java-generics-tang-cuong-tinh-linh-hoat-va-an-toan-kieu.html" class="invert" rel="prev">Java Generics: Tăng cường tính linh hoạt và an toàn kiểu</a></h5></div><div class="content__nav__next">Next Post<h5><a href="https://chantay123.github.io/MyBlog/java-streams-api-xu-ly-du-lieu-hieu-qua.html" class="invert" rel="next">Java Streams API: Xử lý dữ liệu hiệu quả</a></h5></div></nav></footer></article></main><footer class="footer"><div class="footer__copyright">Powered by Publii</div></footer></div><script defer="defer" src="https://chantay123.github.io/MyBlog/assets/js/scripts.min.js?v=4268bfae06e330d473c424d50f09abda"></script><script>window.publiiThemeMenuConfig={mobileMenuMode:'sidebar',animationSpeed:300,submenuWidth: 'auto',doubleClickTime:500,mobileMenuExpandableSubmenus:true,relatedContainerForOverlayMenuSelector:'.navbar'};</script><script>/*<![CDATA[*/var images=document.querySelectorAll("img[loading]");for(var i=0;i<images.length;i++){if(images[i].complete){images[i].classList.add("is-loaded")}else{images[i].addEventListener("load",function(){this.classList.add("is-loaded")},false)}};/*]]>*/</script></body></html>
